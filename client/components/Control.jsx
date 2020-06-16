@@ -6,9 +6,19 @@ class Control extends React.Component {
         range: 0
     }
 
+    check = (evt) => {
+        let checkedState = this.state.checked
+        this.setState({
+            checked: !checkedState
+        })
+    }
+
     render() {
+        console.log(this.state.checked)
         return (
-            <div className = {this.state.checked ? 'controller checked' : 'controller'}
+            <div 
+                className = {this.state.checked ? 'controller checked' : 'controller'}
+                onClick = {this.check}
 
             >
 
