@@ -21,6 +21,8 @@ body {
 .controller {
   position: relative;
   display: inline-block;
+  left: 50%;
+  translate: -50%;
   margin: 2px;
   height: 100px;
   width: 100px;
