@@ -6,11 +6,6 @@ const App = () => {
     <>
       <h1>This is my new header!!</h1>
       <Control/>
-      <Control/>
-      <Control/>
-      <Control/>
-      <Control/>
-      <Control/>
     </>
   )
 }
