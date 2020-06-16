@@ -1,8 +1,17 @@
 import React from 'react'
+import Control from './Control'
 
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
+    <>
+      <h1>This is my new header!!</h1>
+      <Control/>
+      <Control/>
+      <Control/>
+      <Control/>
+      <Control/>
+      <Control/>
+    </>
   )
 }
 
