@@ -3,14 +3,43 @@ import React from 'react'
 class Control extends React.Component {
     state ={
         checked: true,
-        range: 0
+        rightBtnDown: false,
+        velocity: 0
+    }
+    
+    componentDidMount() {
+        document.addEventListener('mouseup', this.mouseUp)
     }
 
-    check = (evt) => {
+
+    mouseDown = (evt) => {
+        const e = evt.nativeEvent
+        console.log(e)
         let checkedState = this.state.checked
-        this.setState({
-            checked: !checkedState
-        })
+
+        if (e.button === 0) {
+            this.setState({
+                checked: !checkedState
+            })
+        }
+
+        if (e.button === 2) {
+            this.setState({
+                rightBtnDown: true
+            })
+        }
+    }
+
+    velocity = (evt) => {
+        console.log(evt.nativeEvent)
+    }
+
+    mouseUp = (evt) => {
+        if (evt.button === 2) {
+            this.setState({
+                rightBtnDown: false
+            })
+        }
     }
 
     render() {
@@ -18,7 +47,9 @@ class Control extends React.Component {
         return (
             <div 
                 className = {this.state.checked ? 'controller checked' : 'controller'}
-                onClick = {this.check}
+                onMouseDown = {this.mouseDown}
+                onMouseMove = {this.state.rightBtnDown ? this.velocity : (e)=>null}
+                onContextMenu = {e => e.preventDefault()}
 
             >
 
