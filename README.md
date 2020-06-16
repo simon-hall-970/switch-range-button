@@ -1,28 +1,9 @@
-# A starter webpack project for React
+# Switch range control component for React
 
-This is a starter project that uses webpack to transpile and bundle ES6 React code. To use, consider these steps:
+This project is to build a UI component that can be used to control a true false value in redux state and also a range input in the redux state.
 
-* Fork this repo
-* Rename your repo according to the app you're building
+The intention is that 
+- a single left click on the element will toggle the switch to change a redux state to true or false.
+- holding down a right click will engage a range slider control and moving the mouse up and down while holding 
 
-```sh
-git clone https://github.com/[your-account]/[your-app].git
-cd [your-app] && npm i
-```
-
-To start the development server with a watcher that rebuilds your code, run `npm run dev`. The assets built by webpack are placed in `server/public`. This folder is defined as a static folder in an Express.js server that can be started with `npm run server`.
-
-Additional components should be placed in `client/components`.
-
-## Separate client/server
-
-The boilerplate is also set up to host the client using `webpack-dev-server` with hot module reloading etc. To use this method, in one terminal run:
-```sh
-npm run client
-```
-and in the other:
-```sh
-npm run server
-```
-The client will be available on http://localhost:8080 and the server on http://localhost:3000. Note that you will still need to manage CORS between the two, as they are on different ports.
-
+Check it works on mobile devices as well.
