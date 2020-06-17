@@ -32,7 +32,7 @@ class Control extends React.Component {
     velocity = (evt) => {
         const e = evt.nativeEvent
         let start = this.state.velocity
-        let movement = e.movementY
+        let movement = (e.movementY)/1.5
         let velChange = () => {
             if (start - movement < 0) {return 0}
             else if (start - movement > 100) {return 100}
