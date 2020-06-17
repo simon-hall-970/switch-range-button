@@ -28,4 +28,9 @@ body {
   width: 100px;
   background-color: green;
 }
+
+.checked {
+  background-color: #11a4b8;
+  color: white;
+}
 /*# sourceMappingURL=main.css.map */

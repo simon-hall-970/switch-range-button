@@ -2,7 +2,7 @@ import React from 'react'
 
 class Control extends React.Component {
     state ={
-        checked: true,
+        checked: false,
         rightBtnDown: false,
         velocity: 100
     }
@@ -56,7 +56,7 @@ class Control extends React.Component {
     }
 
     render() {
-
+        console.log(this.state.checked)
         return (
             
             <div 
