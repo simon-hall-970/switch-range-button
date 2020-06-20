@@ -67,6 +67,16 @@ class Control extends React.Component {
                 onMouseMove = {this.state.rightBtnDown ? this.velocity : (e)=>null}
                 onContextMenu = {e => e.preventDefault()}
             >
+                <div className = 'velocity-container'>
+                    <input 
+                    className="velocity"
+                    type="range" 
+                    id="slider"           
+                    min="0" 
+                    max="127" 
+                    value="100">
+                    </input>
+                </div>
                 {this.state.velocity}
             </div>
         )

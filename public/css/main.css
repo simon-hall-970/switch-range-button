@@ -38,4 +38,29 @@ body {
   background-color: #11a4b8;
   color: white;
 }
+
+.velocity-container {
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.329);
+  position: relative;
+}
+
+.velocity-container .velocity {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  -webkit-appearance: none;
+  margin: 0;
+  width: 100px;
+  height: 20px;
+  outline: none;
+  -webkit-transform: rotate(-90deg) translate(-50%, -50%);
+          transform: rotate(-90deg) translate(-50%, -50%);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
 /*# sourceMappingURL=main.css.map */
