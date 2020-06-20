@@ -15,6 +15,7 @@ class Control extends React.Component {
     mouseDown = (evt) => {
         const e = evt.nativeEvent
         console.log(e)
+        console.log('clientX - clientY: ', e.clientX, ' - ', e.clientY, ' | x - y: ', e.x, ' - ', e.y)
         let checkedState = this.state.checked
 
         if (e.button === 0) {
@@ -24,7 +25,8 @@ class Control extends React.Component {
         }
         if (e.button === 2) {
             this.setState({
-                rightBtnDown: true
+                rightBtnDown: true,
+                initialPos: e.y
             }, ()=>console.log(this.state.rightBtnDown))
         }
     }
@@ -36,7 +38,7 @@ class Control extends React.Component {
         let velChange = () => {
             if (start - movement < 0) {return 0}
             else if (start - movement > 100) {return 100}
-            else {return start - movement}
+            else {return Math.floor(start - movement)}
         }
         let vel = velChange()
         console.log('| movement: ', e.movementY, '| velocity: ', vel)
@@ -65,7 +67,7 @@ class Control extends React.Component {
                 onMouseMove = {this.state.rightBtnDown ? this.velocity : (e)=>null}
                 onContextMenu = {e => e.preventDefault()}
             >
-
+                {this.state.velocity}
             </div>
         )
     }
