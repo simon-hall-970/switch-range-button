@@ -8,11 +8,6 @@ class Control extends React.Component {
         startVel: 100,
         velocity: 100
     }
-    
-    componentDidMount() {
-        document.addEventListener('mouseup', this.mouseUp)
-    }
-
 
     mouseDown = (evt) => {
         const e = evt.nativeEvent
@@ -23,20 +18,25 @@ class Control extends React.Component {
                 checked: !checkedState
             })
         }
-        if (e.button === 2) {
+        if (e.button === 2 && checkedState) {
             this.setState({
                 rightBtnDown: true,
                 startPosY: e.y,
                 startVel: this.state.velocity
+            }, () => {if (this.state.rightBtnDown) {
+                window.addEventListener("mousemove", this.velocity)
+                window.addEventListener("mouseup", this.mouseUp)
+
+                }
             })
         }
+        
     }
 
     velocity = (evt) => {
-        const e = evt.nativeEvent
-        console.log(this.state.startVel)
+        console.log(evt)
         let initialPos = this.state.startPosY
-        let velChange = initialPos - e.y
+        let velChange = initialPos - evt.y
         let startVel = this.state.startVel
         let finalVel = () => {
             if (startVel + velChange < 0) {return 0}
@@ -44,14 +44,13 @@ class Control extends React.Component {
             else {return Math.floor(startVel + velChange)}
         }
         let vel = finalVel()
-        console.log('| initial : ', initialPos, ' | Change: ', velChange, ' | final', vel)
         this.setState({
             velocity: vel           
         })
     }
 
     mouseUp = (evt) => {
-        let velocity = this.state.velocity
+        window.removeEventListener("mousemove", this.velocity)
         if (evt.button === 2) {
             this.setState({
                 rightBtnDown: false,
@@ -60,12 +59,12 @@ class Control extends React.Component {
     }
 
     render() {
+        console.log(this.state.checked)
         return (
             
             <div 
                 className = {this.state.checked ? 'controller checked' : 'controller'}
                 onMouseDown = {this.mouseDown}
-                onMouseMove = {this.state.rightBtnDown ? this.velocity : (e)=>null}
                 onContextMenu = {e => e.preventDefault()}
             >
                 {this.state.velocity}
