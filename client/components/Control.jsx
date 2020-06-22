@@ -66,6 +66,7 @@ class Control extends React.Component {
                 className = {this.state.checked ? 'controller checked' : 'controller'}
                 onMouseDown = {this.mouseDown}
                 onContextMenu = {e => e.preventDefault()}
+                style = {{background: `linear-gradient(0deg, rgb(17, 164, 184) ${this.state.velocity}%, #bbb ${this.state.velocity}%)`}}
             >
                 {this.state.velocity}
             </div>
