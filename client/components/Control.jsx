@@ -4,6 +4,8 @@ class Control extends React.Component {
     state ={
         checked: false,
         rightBtnDown: false,
+        startPosY: 0,
+        startVel: 100,
         velocity: 100
     }
     
@@ -14,8 +16,6 @@ class Control extends React.Component {
 
     mouseDown = (evt) => {
         const e = evt.nativeEvent
-        console.log(e)
-        console.log('clientX - clientY: ', e.clientX, ' - ', e.clientY, ' | x - y: ', e.x, ' - ', e.y)
         let checkedState = this.state.checked
 
         if (e.button === 0) {
@@ -26,22 +26,25 @@ class Control extends React.Component {
         if (e.button === 2) {
             this.setState({
                 rightBtnDown: true,
-                initialPos: e.y
-            }, ()=>console.log(this.state.rightBtnDown))
+                startPosY: e.y,
+                startVel: this.state.velocity
+            })
         }
     }
 
     velocity = (evt) => {
         const e = evt.nativeEvent
-        let start = this.state.velocity
-        let movement = (e.movementY)/1.5
-        let velChange = () => {
-            if (start - movement < 0) {return 0}
-            else if (start - movement > 100) {return 100}
-            else {return Math.floor(start - movement)}
+        console.log(this.state.startVel)
+        let initialPos = this.state.startPosY
+        let velChange = initialPos - e.y
+        let startVel = this.state.startVel
+        let finalVel = () => {
+            if (startVel + velChange < 0) {return 0}
+            else if (startVel + velChange > 100) {return 100}
+            else {return Math.floor(startVel + velChange)}
         }
-        let vel = velChange()
-        console.log('| movement: ', e.movementY, '| velocity: ', vel)
+        let vel = finalVel()
+        console.log('| initial : ', initialPos, ' | Change: ', velChange, ' | final', vel)
         this.setState({
             velocity: vel           
         })
@@ -54,11 +57,9 @@ class Control extends React.Component {
                 rightBtnDown: false,
             })
         }
-        console.log(this.state.velocity)
     }
 
     render() {
-        console.log(this.state.checked)
         return (
             
             <div 
