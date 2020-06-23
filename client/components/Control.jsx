@@ -1,4 +1,6 @@
 import React from 'react'
+import Beat from './Styles'
+
 
 class Control extends React.Component {
     state ={
@@ -62,14 +64,14 @@ class Control extends React.Component {
         console.log(this.state.checked)
         return (
             
-            <div 
-                className = {this.state.checked ? 'controller checked' : 'controller'}
+            <Beat
                 onMouseDown = {this.mouseDown}
                 onContextMenu = {e => e.preventDefault()}
-                style = {{background: `linear-gradient(0deg, rgb(17, 164, 184) ${this.state.velocity}%, #bbb ${this.state.velocity}%)`}}
+                velocity = {this.state.velocity}
+                checked = {this.state.checked}
             >
                 {this.state.velocity}
-            </div>
+            </Beat>
         )
     }
 }
