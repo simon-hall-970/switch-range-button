@@ -9,7 +9,7 @@ const Beat = styled.div`
     margin: 2px;
     height: 100px;
     width: 100px;
-    background-color: green};
+    background-color: green;
     text-align: center;
     line-height: 100px;
     font-size: 3em;
